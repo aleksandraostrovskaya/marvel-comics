@@ -1,4 +1,4 @@
-import './skeleton.scss';
+import './sceleton.scss';
 
 const Skeleton = () => {
     return (

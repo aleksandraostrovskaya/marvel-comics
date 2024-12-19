@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import Spinner from '../spinner/Spinner';
-import Sceleton from '../skeleton/Skeleton';
+import Sceleton from '../sceleton/Sceleton';
 import useMarvelService from '../../services/MarvelService';
 
 import './charInfo.scss';
@@ -11,7 +11,7 @@ import './charInfo.scss';
 const CharInfo = props => {
   const [char, setChar] = useState(null);
 
-  const {error, loading, getCharacter, clearError} = useMarvelService();
+  const { error, loading, getCharacter, clearError } = useMarvelService();
 
   useEffect(() => {
     updateChar();
@@ -22,7 +22,7 @@ const CharInfo = props => {
     if (!charId) {
       return;
     }
-    clearError()
+    clearError();
     getCharacter(charId).then(onCharLoaded);
   };
 
