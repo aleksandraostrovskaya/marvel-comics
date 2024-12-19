@@ -7,6 +7,7 @@ import Sceleton from '../sceleton/Sceleton';
 import useMarvelService from '../../services/MarvelService';
 
 import './charInfo.scss';
+import { Link } from 'react-router-dom'
 
 const CharInfo = props => {
   const [char, setChar] = useState(null);
@@ -47,6 +48,7 @@ const CharInfo = props => {
 
 const View = ({ char }) => {
   const { name, thumbnail, description, homepage, wiki, comics } = char;
+  console.log(comics)
   let imgStyle = { objectFit: 'cover' };
   if (
     thumbnail ===
@@ -77,10 +79,11 @@ const View = ({ char }) => {
         {comics.length > 0 ? null : 'There is no comics with this character'}
         {comics.map((item, i) => {
           if (i > 9) return;
+          const comicId = item.resourceURI.split('/').pop()
           return (
-            <li key={i} className='char__comics-item'>
+            <Link to={`/comics/${comicId}`} key={i} className='char__comics-item'>
               {item.name}
-            </li>
+            </Link>
           );
         })}
       </ul>
